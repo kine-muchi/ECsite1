@@ -21,13 +21,18 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
+    path('', include('store.urls')),
     path('accounts/', include('accounts.urls')),
-    path('crud/', include('crud.urls')),
-    path('search/', include('search.urls')),
-    path('admin/', admin.site.urls),
+    path('book/', include('book.urls')),
+    path('django-admin/', admin.site.urls),
+    # path('crud/', include('crud.urls')),
+    # path('search/', include('search.urls')),
+    # path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, 
                         document_root=settings.MEDIA_ROOT)
+
+
