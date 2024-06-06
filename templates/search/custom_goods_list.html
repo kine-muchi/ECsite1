@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>商品リスト</h2>
+<form method="get" id="GoodsSearchForm">
+    {{ form.non_field_errors }}
+    <div class="search_field">
+        {{ form.name.errors }}
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+        {{ form.name }}
+    </div>
+    <div class="search_field">
+        {{ form.management_code.errors }}
+        <label for="{{ form.management_code.id_for_label }}">{{ form.management_code.label }}:</label>
+        {{ form.management_code }}
+    </div>
+    <div class="search_field">
+        {{ form.group.errors }}
+        <label for="{{ form.group.id_for_label }}">{{ form.group.label }}:</label>
+        {{ form.group }}
+    </div>
+    <div class="search_field">
+        {{ form.price_begin.errors }}
+        {{ form.price_end.errors }}
+        <label for="{{ form.price_begin.id_for_label }}">価格範囲:</label>
+        {{ form.price_begin }}
+        <label for="{{ form.price_end.id_for_label }}"> ～ </label>
+        {{ form.price_end }}
+    </div>
+    <input type="submit" value="検索">
+</form>
+<table>
+    <tr>
+        <th>商品名</th>
+        <td>説明</td>
+        <td>発売日</td>
+        <td>価格</td>
+        <td>グループ</td>
+    </tr>
+    {% for customgoods in customgoods_list %}
+    <tr>
+        <th><span class="font-weight-bold">{{ customgoods.name }}</span></th>
+        <td>{{ customgoods.description }}</td>
+        <td>{{ customgoods.release_date }}</td>
+        <td>{{ customgoods.price }}</td>
+        <td>{{ customgoods.group.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?{{ query_string }}&page={{ page_obj.previous_page_number }}">前のページへ</a>
+        {% endif %}
+
+        {% for link_page in page_obj.paginator.page_range %}
+        {% if link_page == page_obj.number %}
+            <span class="page-link" href="#">{{ link_page }}</span>
+        {% else %}
+            <span class="page-link" href="#"><a
+                href="?{{ query_string }}&page={{ link_page }}">{{ link_page }}</a></span>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?{{ query_string }}&page={{ page_obj.next_page_number }}">次のページへ</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
