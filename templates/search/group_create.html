@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>商品グループ作成ページ</h2>
+<form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- <label for="product_group">商品グループ:</label>
+            <input type="text" id="product_group" name="product_group"><br> -->
+
+    <input type="submit" id="save" value="作成">
+</form>
+
+{% endblock %}

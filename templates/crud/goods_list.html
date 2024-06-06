@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>商品リスト</h2>
+<a href="{% url 'crud:goods_create' %}">作成</a>
+{% for goods in goods_list %}
+{% if goods.state_flag %}
+    <p>
+    {{ goods.name }}
+    <a href="{% url 'crud:goods_update' goods.id %}">更新</a>
+    <a href="{% url 'crud:goods_detail' goods.id %}">詳細</a>
+    <a href="{% url 'crud:goods_delete' goods.id %}">削除</a>
+    </p>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

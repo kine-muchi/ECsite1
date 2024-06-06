@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}Python 講座{% endblock %}</title>
+</head>
+<body>
+<h2>ユーザー作成ページ</h2>
+<form method="POST"><!--post送信の時はcsrf_tokenが必要-->
+{% csrf_token %}
+
+{{ form.as_p }}
+<input type="submit" id="save" value="作成">
+</form>
+</body>
+</html>

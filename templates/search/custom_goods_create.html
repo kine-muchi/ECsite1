@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>商品作成ページ</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <!-- <label for="name">商品名:</label>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="management_code">管理コード:</label>
+    <input type="text" id="management_code" name="management_code"><br>
+
+    <label for="price">価格:</label>
+    <input type="text" id="price" name="price"><br>
+
+    <label for="release_date">発売日:</label>
+    <input type="text" id="release_flag" name="release_flag"><br>
+
+
+    <label for="release_flag">発売済み:</label>
+    <input type="checkbox" id="release_date" name="release_date"><br>
+
+
+    <label for="description">説明:</label>
+    <input type="text" id="description" name="description"><br>
+
+    <label for="image">画像:</label>
+    <input type="file" id="image" name="image"><br>
+
+
+    <label for="group">商品グループ:</label>
+    <select id="group" name="group">
+        <option value="Python">Python</option>
+        <option value="java">Java</option>
+        <option value="php">PHP</option>
+    </select><br> -->
+
+    <input type="submit" id="save" value="作成">
+</form>
+{% endblock %}

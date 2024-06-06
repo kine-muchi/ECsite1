@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>商品名:{{ object.name }}</h2>
+{% if object.image %}
+<p>商品画像：</p><img src="{{ object.image.url }}/">
+{% endif %}
+<p>管理番号：{{ object.management_code }}</p>
+<p>価格：{{ object.price }}</p>
+<p>発売日：{{ object.release_date }}</p>
+<p>発売状況：{{ object.release_flag }}</p>
+<p>商品説明：{{ object.description }}</p>
+<p>運用状況：{{ object.state_flag }}</p>
+
+{% endblock %}
